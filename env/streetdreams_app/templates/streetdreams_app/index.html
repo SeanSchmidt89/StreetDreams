@@ -1,0 +1,25 @@
+{% extends 'streetdreams_app/base.html' %}
+
+
+{% block title %}
+    Home
+{% endblock title %}
+
+
+
+
+{% block content %}
+    <h1>Home</h1>
+
+    <ul>
+    {% for post in posts %}
+        <li>
+            {{post.title}}
+            <a href="{% url 'update' post.id %}">Edit</a>
+        </li>
+    {% endfor %}
+    </ul>    
+
+{% endblock content %}
+    
+    
