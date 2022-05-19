@@ -9,12 +9,15 @@
 
 
 {% block content %}
-    <h1>Home</h1>
+    <h1>Street Dreams</h1>
 
+    <a href="{% url 'create_post' %}">Add a Post</a>
+    <h3>Blog Posts</h3>
     <ul>
     {% for post in posts %}
         <li>
-            {{post.title}}
+            {{post.title}} - {{post.user}}
+            <a href="{% url 'post_details' post.id %}">View Post</a>
             <a href="{% url 'update' post.id %}">Edit</a>
         </li>
     {% endfor %}

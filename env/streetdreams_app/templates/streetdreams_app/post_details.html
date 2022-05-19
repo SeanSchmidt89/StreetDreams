@@ -1,0 +1,21 @@
+{% extends 'streetdreams_app/base.html' %}
+
+
+{% block title %}
+    {{post.title}}
+{% endblock title %}
+
+
+
+
+{% block content %}
+    
+    <p>{{post.title}} by {{post.user}} </p>
+    <hr>
+    <br>
+    {{post.content}}
+    <br>
+    <br>
+    <a href="{% url 'index' %}">Back</a>
+{% endblock content %}
+    
