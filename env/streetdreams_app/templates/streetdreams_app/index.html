@@ -9,10 +9,11 @@
 
 
 {% block content %}
-    <h1>Street Dreams</h1>
-
-    <a href="{% url 'create_post' %}">Add a Post</a>
-    <h3>Blog Posts</h3>
+<br>
+<h1>Blog Posts</h1>
+<a href="{% url 'create_post' %}">Add a Post</a>
+<br>
+<br>
     <ul>
     {% for post in posts %}
         <li>
