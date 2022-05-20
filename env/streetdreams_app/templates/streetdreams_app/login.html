@@ -2,23 +2,24 @@
 
 
 {% block title %}
-    {{post.title}}
+    User Login
 {% endblock title %}
 
 
-
 {% block content %}
-    <br>
-    <h1>Add a Post</h1>
-    <hr>
-    <br>
+<br>
+<h1>User Login</h1>
+<hr>
+<br>
+
     <form action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Add Post</button>
+        <button type="submit">Login</button>
     </form>
-    <a href="{% url 'index' %}">Back</a>
-
-
+<br>
+<a href="{% url 'index' %}">Back</a>
+<br>
+<p>Dont have an account? <a href="#">Register</a></p>
 {% endblock content %}
     

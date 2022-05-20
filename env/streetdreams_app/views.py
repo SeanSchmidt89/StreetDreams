@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView,  DeleteView, ListView, UpdateView
 from .models import *
 from .forms import *
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -33,3 +35,18 @@ class CreatePost(CreateView):
     form_class = PostForm
     template_name = 'streetdreams_app/create_post.html'
     success_url = reverse_lazy('index')
+
+
+class DeletePost(DeleteView):
+    model = Post
+    context_object_name = 'post'
+    success_url = reverse_lazy('index')
+    template_name = 'streetdreams_app/delete.html'
+
+
+class UserLogin(LoginView):
+    template_name = 'streetdreams_app/login.html'
+    redirect_authenticated_user = True
+    
+    def get_success_url(self):
+        return reverse_lazy('index')

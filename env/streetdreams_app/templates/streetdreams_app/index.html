@@ -11,6 +11,13 @@
 {% block content %}
 <br>
 <h1>Blog Posts</h1>
+<hr>
+{% if user.is_authenticated %}
+    <p>Welcome, {{user | title}}!  <small><a href="{% url 'logout' %}">(Logout)</a></small></p> 
+{% else %}
+    <a class="nav-link" href="{% url 'login' %}">Login</a>
+{% endif %}
+
 <a href="{% url 'create_post' %}">Add a Post</a>
 <br>
 <br>
@@ -19,8 +26,10 @@
         <li>
             {{post.title}} - {{post.user}}
             <a href="{% url 'post_details' post.id %}">View Post</a>
+            <a href="{% url 'delete' post.id %}">Delete</a>
             <a href="{% url 'update' post.id %}">Edit</a>
         </li>
+        <br>
     {% endfor %}
     </ul>    
 
