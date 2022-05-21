@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView,  DeleteView, ListView, UpdateView
+from django.views.generic import CreateView, DetailView,  DeleteView, ListView, UpdateView, FormView
 from .models import *
 from .forms import *
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.shortcuts import redirect
 
 
 # Create your views here.
@@ -50,3 +53,15 @@ class UserLogin(LoginView):
     
     def get_success_url(self):
         return reverse_lazy('index')
+
+class Register(FormView):
+    template_name = 'streetdreams_app/register.html'
+    form_class = UserCreationForm
+    redirect_authenticated_user = True
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        user = form.save()
+        if user is not None:
+            login(self.request, user) 
+        return super(Register, self).form_valid(form)
