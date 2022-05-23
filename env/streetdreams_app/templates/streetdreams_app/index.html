@@ -17,22 +17,22 @@
 {% else %}
     <a class="nav-link" href="{% url 'login' %}">Login</a>
 {% endif %}
-
-
+<br>
+<p><a class="nav-link" href="{% url 'api' %}">VIN Number Info</a></p>
+<br>
 {% if user.is_authenticated %}
     <a href="{% url 'create_post' %}">Add a Post</a> 
 {% endif %}
     
 
 <br>
-<br>
     <ul>
     {% for post in posts %}
         <li>
             {{post.title}} - {{post.user}}
-            <a href="{% url 'post_details' post.id %}">View Post</a>
-            <a href="{% url 'delete' post.id %}">Delete</a>
-            <a href="{% url 'update' post.id %}">Edit</a>
+            <small><a href="{% url 'post_details' post.id %}">View Post</a></small>
+            <small><a href="{% url 'delete' post.id %}">Delete</a></small>
+            <small><a href="{% url 'update' post.id %}">Edit</a></small>
         </li>
         <br>
     {% endfor %}

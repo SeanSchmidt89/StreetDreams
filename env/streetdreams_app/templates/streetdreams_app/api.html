@@ -1,0 +1,32 @@
+{% extends 'streetdreams_app/base.html' %}
+
+
+{% block title %}
+    API
+{% endblock title %}
+
+
+
+{% block content %}
+<br>
+<h1>VIN INFO</h1>
+<hr>
+<br>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" name="car" placeholder="Enter VIN">
+    <button type="submit">Search</button>
+</form>
+<br>
+
+{% if make %}
+    <p>Make: {{make}}</p>
+    <p>Model: {{model}}</p>
+{% endif %}
+
+<a href="{% url 'index' %}">Back</a>
+    
+
+{% endblock content %}
+    
