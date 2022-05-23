@@ -12,16 +12,18 @@
 <br>
 <h1>Blog Posts</h1>
 <hr>
+<br>
 {% if user.is_authenticated %}
-    <p>Welcome, {{user | title}}!  <small><a href="{% url 'logout' %}">(Logout)</a></small></p> 
+    <p>Welcome, {{user | title}}!  <small><a href="{% url 'logout' %}">(Logout)</a></small></p>
 {% else %}
     <a class="nav-link" href="{% url 'login' %}">Login</a>
+    <br>
 {% endif %}
-<br>
 <p><a class="nav-link" href="{% url 'api' %}">VIN Number Info</a></p>
-<br>
 {% if user.is_authenticated %}
-    <a href="{% url 'create_post' %}">Add a Post</a> 
+    <a href="{% url 'create_post' %}">Add a Post</a>
+    <br>
+    <br>
 {% endif %}
     
 

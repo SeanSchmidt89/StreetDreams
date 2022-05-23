@@ -2,14 +2,14 @@
 
 
 {% block title %}
-    API
+    VIN Info
 {% endblock title %}
 
 
 
 {% block content %}
 <br>
-<h1>VIN INFO</h1>
+<h1>VIN Info</h1>
 <hr>
 <br>
 
@@ -23,10 +23,19 @@
 {% if make %}
     <p>Make: {{make}}</p>
     <p>Model: {{model}}</p>
+    <p>Year: {{year}}</p>
+    <p>Type: {{type}}</p>
+    <p>Engine: {{engine | title}} {{cylinder}}</p>
+    <p>Forced Induction: {{compressortype | title}}</p>
+    <p>Horse Power: {{horsepower}}</p>
+    <p>MPG Highway: {{highway}}</p>
+    <p>MPG City: {{city}}</p>
 {% endif %}
 
 <a href="{% url 'index' %}">Back</a>
     
 
 {% endblock content %}
+
+
     
