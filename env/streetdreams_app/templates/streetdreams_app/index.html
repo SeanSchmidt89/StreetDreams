@@ -31,10 +31,14 @@
     <ul>
     {% for post in posts %}
         <li>
-            {{post.title}} - {{post.user}}
+            {{post.title|title}} - By {{post.user|title}}
             <small><a href="{% url 'post_details' post.id %}">View Post</a></small>
-            <small><a href="{% url 'delete' post.id %}">Delete</a></small>
-            <small><a href="{% url 'update' post.id %}">Edit</a></small>
+            
+            {% if user.id == post.user.id %}
+                <small><a href="{% url 'delete' post.id %}">Delete</a></small>
+                <small><a href="{% url 'update' post.id %}">Edit</a></small>
+            {% endif %}
+                
         </li>
         <br>
     {% endfor %}

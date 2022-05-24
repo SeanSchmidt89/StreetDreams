@@ -10,10 +10,14 @@
 
 {% block content %}
     <br>
-    <p>{{post.title}} by {{post.user}} </p>
+    <h4>{{post.title|title}}</h4> <p>- By {{post.user|title}} </p>
     <hr>
     <br>
     {{post.content}}
+    {% if user.id == post.user.id %}
+                <small><a href="{% url 'delete' post.id %}">Delete</a></small>
+                <small><a href="{% url 'update' post.id %}">Edit</a></small>
+    {% endif %}
     <br>
     <br>
     <a href="{% url 'index' %}">Back</a>
