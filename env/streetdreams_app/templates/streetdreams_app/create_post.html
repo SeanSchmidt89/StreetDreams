@@ -19,6 +19,12 @@
     </form>
     <a href="{% url 'index' %}">Back</a>
 
+    <script>
+        var name = '{{user.id}}';
+        document.getElementById('user').value 
+        = name;
+    </script>
+
 
 {% endblock content %}
     

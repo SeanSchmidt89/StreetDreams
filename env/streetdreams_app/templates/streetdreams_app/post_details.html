@@ -10,7 +10,10 @@
 
 {% block content %}
     <br>
-    <h4>{{post.title|title}}</h4> <p>- By {{post.user|title}} </p>
+    <h1>{{post.title|title}}</h1>
+    <br>
+    <p>By: {{post.user|title}}</p>
+    <p>Date Posted: {{post.created}}</p>
     <hr>
     <br>
     {{post.content}}
