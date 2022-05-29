@@ -58,7 +58,7 @@ class UserLogin(LoginView):
 
 class Register(FormView):
     template_name = 'streetdreams_app/register.html'
-    form_class = UserCreationForm
+    form_class = UserSignUp
     redirect_authenticated_user = True
     success_url = reverse_lazy('index')
 

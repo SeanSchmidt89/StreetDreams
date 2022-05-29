@@ -17,6 +17,13 @@
     <hr>
     <br>
     {{post.content}}
+    <br>
+    
+    {% if post.image %}
+    <img src="{{post.image.url}}" alt="" >    
+    {% endif %}
+        
+    
     {% if user.id == post.user.id %}
                 <small><a href="{% url 'delete' post.id %}">Delete</a></small>
                 <small><a href="{% url 'update' post.id %}">Edit</a></small>

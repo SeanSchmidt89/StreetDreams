@@ -12,7 +12,7 @@
     <h1>Add a Post</h1>
     <hr>
     <br>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Add Post</button>
