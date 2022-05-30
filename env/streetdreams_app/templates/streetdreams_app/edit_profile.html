@@ -1,0 +1,26 @@
+{% extends 'streetdreams_app/base.html' %}
+
+
+{% block title %}
+    Edit Profile
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+    <br>
+    <h1>Edit Profile</h1>
+    <br>
+    <p>{{user.profile.bio}}</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Update</button>
+    </form>
+    <a href="{% url 'index' %}">Back</a>
+
+
+{% endblock content %}
+    

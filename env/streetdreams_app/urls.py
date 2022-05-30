@@ -12,4 +12,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('register/', Register.as_view(), name='register'),
     path('vininfo/', Api, name='api'),
+    path('edit_profile/', EditProfile.as_view(), name='edit_profile'),
+    path('profile/<int:pk>', ProfilePage.as_view(), name='profile_page'),
+
 ]

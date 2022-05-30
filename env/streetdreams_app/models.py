@@ -15,3 +15,11 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created']
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+
+    def __str__(self):
+        return str(self.user)

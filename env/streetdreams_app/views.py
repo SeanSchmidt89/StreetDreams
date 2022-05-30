@@ -1,12 +1,12 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView,  DeleteView, ListView, UpdateView, FormView
 from .models import *
 from .forms import *
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
 import requests
@@ -103,3 +103,25 @@ def Api(request):
         context = {}
 
     return render(request, 'streetdreams_app/vininfo.html', context)
+
+
+class EditProfile(UpdateView):
+    form_class = UserChangeForm
+    template_name = 'streetdreams_app/edit_profile.html'
+    success_url = reverse_lazy('index')
+
+    def get_object(self):
+        return self.request.user
+
+
+class ProfilePage(DetailView):
+    model = Profile
+    template_name = 'streetdreams_app/user_profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        users = Profile.objects.all()
+        context = super(ProfilePage, self).get_context_data(*args, **kwargs)
+        user_profile = get_object_or_404(Profile, id=self.kwargs['pk'])
+
+        context['user_profile'] = user_profile
+        return context

@@ -10,35 +10,34 @@
 
 {% block content %}
 <br>
+{% if user.is_authenticated %}
+    <p>Welcome, {{user | title}}!  <small><a href="{% url 'logout' %}">(Logout)</a></small></p>
+    <a href="{% url 'edit_profile' %}">Edit Profile</a><br>
+    <br>
+{% else %}
+    <a href="{% url 'login' %}">Login</a><br>
+    <br>
+{% endif %}
+    <a href="{% url 'api' %}">VIN Number Info</a><br>
+    <br>
+{% if user.is_authenticated %}
+    <a href="{% url 'create_post' %}">Add a Post</a><br>
+    <br>
+    <br>
+{% endif %}
 <h1>Blog Posts</h1>
 <hr>
 <br>
-{% if user.is_authenticated %}
-    <p>Welcome, {{user | title}}!  <small><a href="{% url 'logout' %}">(Logout)</a></small></p>
-{% else %}
-    <a class="nav-link" href="{% url 'login' %}">Login</a>
-    <br>
-{% endif %}
-<p><a class="nav-link" href="{% url 'api' %}">VIN Number Info</a></p>
-{% if user.is_authenticated %}
-    <a href="{% url 'create_post' %}">Add a Post</a>
-    <br>
-    <br>
-{% endif %}
     
-
-<br>
     <ul>
     {% for post in posts %}
         <li>
-            {{post.title|title}} - By {{post.user|title}}
-            <small><a href="{% url 'post_details' post.id %}">View Post</a></small>
-            
+            <h6><a href="{% url 'post_details' post.id %}">{{post.title|title}}</a> - By {{post.user|title}}</h6>
             {% if user.id == post.user.id %}
-                <small><a href="{% url 'delete' post.id %}">Delete</a></small>
-                <small><a href="{% url 'update' post.id %}">Edit</a></small>
+                <small><a href="{% url 'update' post.id %}">(Edit)</a></small>
+                <small><a href="{% url 'delete' post.id %}">(Delete)</a></small>
             {% endif %}
-                
+         <br><br>       
         </li>
         <br>
     {% endfor %}

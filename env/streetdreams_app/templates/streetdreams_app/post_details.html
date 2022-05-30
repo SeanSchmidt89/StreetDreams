@@ -12,24 +12,24 @@
     <br>
     <h1>{{post.title|title}}</h1>
     <br>
-    <p>By: {{post.user|title}}</p>
+    <p>By: <a href="{% url 'profile_page' post.user.profile.id %}">{{post.user|title}}</a></p>
     <p>Date Posted: {{post.created}}</p>
     <hr>
     <br>
     {{post.content}}
-    <br>
-    
-    {% if post.image %}
-    <img src="{{post.image.url}}" alt="" >    
-    {% endif %}
-        
-    
     {% if user.id == post.user.id %}
-                <small><a href="{% url 'delete' post.id %}">Delete</a></small>
-                <small><a href="{% url 'update' post.id %}">Edit</a></small>
+        <small><a href="{% url 'update' post.id %}">(Edit)</a></small>
+        <small><a href="{% url 'delete' post.id %}">(Delete)</a></small>
+    {% endif %}
+    <br>
+    <br>
+    {% if post.image %}
+        <img width="450px" height="550px" src="{{post.image.url}}" alt="" >    
     {% endif %}
     <br>
     <br>
     <a href="{% url 'index' %}">Back</a>
+    <br>
+    <br>
 {% endblock content %}
     
