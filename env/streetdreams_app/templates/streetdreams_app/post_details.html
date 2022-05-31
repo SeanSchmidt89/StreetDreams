@@ -16,7 +16,11 @@
     <p>Date Posted: {{post.created}}</p>
     <hr>
     <br>
-    {{post.content}}
+    <p>profile pic: </p><img class="rounded-circle" width="100px" height="100px" src="{{post.user.profile.profile_pic.url}}" alt="">
+
+    <p>profile mods: {{post.user.profile.mods}}</p>
+    <br>
+    <p>post content: {{post.content}}</p>
     {% if user.id == post.user.id %}
         <small><a href="{% url 'update' post.id %}">(Edit)</a></small>
         <small><a href="{% url 'delete' post.id %}">(Delete)</a></small>

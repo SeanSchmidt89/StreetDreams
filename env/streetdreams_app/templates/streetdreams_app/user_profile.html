@@ -12,7 +12,8 @@
 <h1>{{user_profile|title}}'s Profile</h1>
 <hr>
 <br>
-    {{user_profile}}
+    <p>Username: {{user_profile|title}}</p><br>
+    <p>About Me: {{user_profile.bio}}</p>
 <br>
 <br>
 <a href="{% url 'index' %}">back</a>

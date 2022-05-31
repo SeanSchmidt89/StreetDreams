@@ -20,6 +20,9 @@ class Post(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField()
+    profile_pic = models.ImageField(null=True, blank=True, upload_to='images/profile')
+    car = models.CharField(max_length=100, null=True, blank=True)
+    mods = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return str(self.user)
