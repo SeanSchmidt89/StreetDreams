@@ -12,12 +12,16 @@
     <br>
     <h1>{{post.title|title}}</h1>
     <br>
-    <p>By: <a href="{% url 'profile_page' post.user.profile.id %}">{{post.user|title}}</a></p>
+    {% if post.user.profile.profile_pic %}
+    <a href="{% url 'profile_page' post.user.profile.id %}"><img class="rounded-circle" width="100px" height="100px" src="{{post.user.profile.profile_pic.url}}" alt=""></a>
+        
+    {% endif %}
+    <br><br>
+    <p>Posted By: <a href="{% url 'profile_page' post.user.profile.id %}">{{post.user|title}}</a>
+    </p>
     <p>Date Posted: {{post.created}}</p>
     <hr>
     <br>
-    <p>profile pic: </p><img class="rounded-circle" width="100px" height="100px" src="{{post.user.profile.profile_pic.url}}" alt="">
-
     <p>profile mods: {{post.user.profile.mods}}</p>
     <br>
     <p>post content: {{post.content}}</p>
