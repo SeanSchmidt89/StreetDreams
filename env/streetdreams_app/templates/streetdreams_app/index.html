@@ -37,7 +37,7 @@
     {% for post in posts %}
         <li class="list-group-item">
             <h5><a style="text-decoration: none;" href="{% url 'post_details' post.id %}">{{post.title|title}}</a></h5>
-            <em><small>- By {{post.user|title}}</small></em>
+            <em><small>- By <a style="text-decoration: none;" href="{% url 'profile_page' post.user.profile.id %}">{{post.user|title}}</a></small></em>
             <p style="max-width: 600px;">{{post.content|slice:":245"}}</p>
             {% if user.id == post.user.id %}
             <a class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .15rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .75rem;" href="{% url 'update' post.id %}">Edit</a>

@@ -18,6 +18,7 @@
 <p>Posted By: <a style="text-decoration: none;" href="{% url 'profile_page' post.user.profile.id %}"><em>{{post.user|title}}</em></a></p>
 <p>Date Posted: <em>{{post.created}}</em></p>
 <a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Back</a>
+<a class="btn btn-primary btn-sm" href="{% url 'profile_page' post.user.profile.id %}">View Profile</a>
 </div>
 <hr>
 <br>
@@ -26,7 +27,7 @@
         <div class="row g-0">
         {% if post.image %}
         <div class="col-md-4">
-            <img class="img-fluid rounded-start" style="margin-top: 25px; margin-left:20px;" width="250px" height="320px" src="{{post.image.url}}" alt="" >
+            <img class="img-fluid rounded-start" style="margin-top: 25px; margin-left:20px; margin-bottom: 20px;" width="250px" height="320px" src="{{post.image.url}}" alt="" >
         </div>
         {% endif %}
         <div class="col-md-8">
