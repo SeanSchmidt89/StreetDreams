@@ -16,7 +16,7 @@
 <br><br>
 <p>Posted By: <a href="{% url 'profile_page' post.user.profile.id %}">{{post.user|title}}</a></p>
 <p>Date Posted: {{post.created}}</p>
-<a class="btn btn-secondary btn-sm" class="margin-left:20px;" href="{% url 'index' %}">Back</a>
+<a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Back</a>
 <hr>
 
 
@@ -30,12 +30,13 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-            <h5 class="card-title">{{post.title|title}}</h5>
-            <p class="card-text">post content: {{post.content}}</p>
+            <h3 class="card-title">{{post.title|title}}</h3>
+            <hr>
+            <p class="card-text">{{post.content}}</p>
             {% if user.id == post.user.id %}
-                <br>
-                <small class="text-muted"><a href="{% url 'update' post.id %}">(Edit)</a></small>
-                <small class="text-muted"><a href="{% url 'delete' post.id %}">(Delete)</a></small>
+        
+                <a class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .15rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .75rem;" href="{% url 'update' post.id %}">Edit</a>
+                <a class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .15rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .75rem;" href="{% url 'delete' post.id %}">Delete</a>
             {% endif %}
             </div>
         </div>

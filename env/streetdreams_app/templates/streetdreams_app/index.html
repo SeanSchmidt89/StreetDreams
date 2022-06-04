@@ -34,8 +34,8 @@
         <li>
             <h6><a href="{% url 'post_details' post.id %}">{{post.title|title}}</a> - By {{post.user|title}}</h6>
             {% if user.id == post.user.id %}
-                <small><a href="{% url 'update' post.id %}">(Edit)</a></small>
-                <small><a href="{% url 'delete' post.id %}">(Delete)</a></small>
+            <a class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .15rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .75rem;" href="{% url 'update' post.id %}">Edit</a>
+            <a class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .15rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .75rem;" href="{% url 'delete' post.id %}">Delete</a>
             {% endif %}
          <br><br>       
         </li>

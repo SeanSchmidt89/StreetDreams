@@ -15,11 +15,11 @@
 <br>
 <form action="" method="POST">
     {% csrf_token %}
-    <p>Are you sure you want to delete: {{post.title | title}}?</p>
-    <button type="submit">Delete</button>
+    <p>Are you sure you want to delete: <em><strong>{{post.title | title}}?</strong></em></p>
+    <button class="btn btn-primary btn-sm" type="submit">Delete</button>
 </form>
 <br>
-<a href="{% url 'index' %}">Back</a>
+<a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Back</a>
 
 
 
