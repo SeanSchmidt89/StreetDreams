@@ -13,11 +13,12 @@
 <hr>
 <br>
 {% if profile.profile_pic %}
-    <a href="#"><img class="rounded-circle" width="100px" height="100px" src="{{post.user.profile.profile_pic.url}}" alt=""></a>
-        
+    <img class="rounded-circle" width="100px" height="100px" src="{{profile.profile_pic.url}}" alt="">
 {% endif %}
-<p>Username: {{user_profile|title}}</p><br>
-<p>About Me: {{user_profile.bio}}</p>
+<br><br>
+<p>Username: {{user_profile|title}}</p>
+<p>About me: {{user_profile.bio}}</p>
+<p>Mods: {{user_profile.mods}}</p>
 <br>
 <br>
 <a href="{% url 'index' %}">back</a>

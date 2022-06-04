@@ -15,8 +15,11 @@
 
 <form action="" method="POST">
     {% csrf_token %}
+      
+    <div class="input-group mb-3">
     <input type="text" name="car" placeholder="Enter VIN">
-    <button type="submit">Search</button>
+    <button class="btn btn-primary" type="submit">Search</button>
+    </div>
 </form>
 <br>
 
@@ -32,7 +35,7 @@
     <p>MPG City: {{city}}</p>
 {% endif %}
 
-<a href="{% url 'index' %}">Back</a>
+<a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Back</a>
     
 
 {% endblock content %}

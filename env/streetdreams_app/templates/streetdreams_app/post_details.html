@@ -9,35 +9,37 @@
 
 
 {% block content %}
-    <br>
-    <h1>{{post.title|title}}</h1>
-    <br>
-    {% if post.user.profile.profile_pic %}
-    <a href="{% url 'profile_page' post.user.profile.id %}"><img class="rounded-circle" width="100px" height="100px" src="{{post.user.profile.profile_pic.url}}" alt=""></a>
-        
-    {% endif %}
-    <br><br>
-    <p>Posted By: <a href="{% url 'profile_page' post.user.profile.id %}">{{post.user|title}}</a>
-    </p>
-    <p>Date Posted: {{post.created}}</p>
-    <hr>
-    <br>
-    <p>profile mods: {{post.user.profile.mods}}</p>
-    <br>
-    <p>post content: {{post.content}}</p>
-    {% if user.id == post.user.id %}
-        <small><a href="{% url 'update' post.id %}">(Edit)</a></small>
-        <small><a href="{% url 'delete' post.id %}">(Delete)</a></small>
-    {% endif %}
-    <br>
-    <br>
-    {% if post.image %}
-        <img width="450px" height="550px" src="{{post.image.url}}" alt="" >    
-    {% endif %}
-    <br>
-    <br>
-    <a href="{% url 'index' %}">Back</a>
-    <br>
-    <br>
+<br>
+{% if post.user.profile.profile_pic %}
+<a href="{% url 'profile_page' post.user.profile.id %}"><img class="rounded-circle" width="100px" height="100px" src="{{post.user.profile.profile_pic.url}}" alt=""></a>
+{% endif %}
+<br><br>
+<p>Posted By: <a href="{% url 'profile_page' post.user.profile.id %}">{{post.user|title}}</a></p>
+<p>Date Posted: {{post.created}}</p>
+<a class="btn btn-secondary btn-sm" class="margin-left:20px;" href="{% url 'index' %}">Back</a>
+<hr>
+
+
+
+    <div class="card mb-3" style="max-width: 950px;">
+        <div class="row g-0">
+        {% if post.image %}
+            <div class="col-md-4">
+                <img class="img-fluid rounded-start" width="250px" height="320px" src="{{post.image.url}}" alt="" >
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h5 class="card-title">{{post.title|title}}</h5>
+            <p class="card-text">post content: {{post.content}}</p>
+            {% if user.id == post.user.id %}
+                <br>
+                <small class="text-muted"><a href="{% url 'update' post.id %}">(Edit)</a></small>
+                <small class="text-muted"><a href="{% url 'delete' post.id %}">(Delete)</a></small>
+            {% endif %}
+            </div>
+        </div>
+        </div>
+    </div>
 {% endblock content %}
     
