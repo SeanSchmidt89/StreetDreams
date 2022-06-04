@@ -36,7 +36,7 @@
     <ul>
     {% for post in posts %}
         <li class="list-group-item">
-            <h5><a href="{% url 'post_details' post.id %}">{{post.title|title}}</a></h5>
+            <h5><a style="text-decoration: none;" href="{% url 'post_details' post.id %}">{{post.title|title}}</a></h5>
             <em><small>- By {{post.user|title}}</small></em>
             <p style="max-width: 600px;">{{post.content|slice:":245"}}</p>
             {% if user.id == post.user.id %}

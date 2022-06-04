@@ -15,7 +15,7 @@
 <a href="{% url 'profile_page' post.user.profile.id %}"><img class="rounded-circle" width="100px" height="100px" src="{{post.user.profile.profile_pic.url}}" alt=""></a>
 {% endif %}
 <br><br>
-<p>Posted By: <a href="{% url 'profile_page' post.user.profile.id %}"><em>{{post.user|title}}</em></a></p>
+<p>Posted By: <a style="text-decoration: none;" href="{% url 'profile_page' post.user.profile.id %}"><em>{{post.user|title}}</em></a></p>
 <p>Date Posted: <em>{{post.created}}</em></p>
 <a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Back</a>
 </div>
@@ -25,10 +25,10 @@
     <div class="card mb-3 shadow p-3 mb-5 bg-body rounded" style="max-width: 950px;">
         <div class="row g-0">
         {% if post.image %}
-            <div class="col-md-4">
-                <img class="img-fluid rounded-start" style="margin-top: 25px; margin-left:20px;" width="250px" height="320px" src="{{post.image.url}}" alt="" >
-            {% endif %}
+        <div class="col-md-4">
+            <img class="img-fluid rounded-start" style="margin-top: 25px; margin-left:20px;" width="250px" height="320px" src="{{post.image.url}}" alt="" >
         </div>
+        {% endif %}
         <div class="col-md-8">
             <div class="card-body">
             <h3 class="card-title">{{post.title|title}}</h3>

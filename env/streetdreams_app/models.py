@@ -23,6 +23,9 @@ class Profile(models.Model):
     profile_pic = models.ImageField(null=True, blank=True, upload_to='images/profile')
     car = models.CharField(max_length=100, null=True, blank=True)
     mods = models.TextField(null=True, blank=True)
+    pic_1 = models.ImageField(null=True, blank=True, upload_to='images/profile')
+    pic_2 = models.ImageField(null=True, blank=True, upload_to='images/profile')
+    pic_3 = models.ImageField(null=True, blank=True, upload_to='images/profile')
 
     def __str__(self):
         return str(self.user)

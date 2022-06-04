@@ -7,19 +7,51 @@
 
 
 {% block content %}
-<br>
-<br>
+<br><br>
 <h1>{{user_profile|title}}'s Profile</h1>
 <hr>
 <br>
 <div class="shadow p-3 mb-5 bg-body rounded">
+<br>
 {% if profile.profile_pic %}
-    <img class="rounded-circle" width="100px" height="100px" src="{{profile.profile_pic.url}}" alt="">
+    <img class="rounded-circle" width="140px" height="140px" src="{{profile.profile_pic.url}}" alt="">
 {% endif %}
 <br><br>
-<p>Username: {{user_profile|title}}</p>
+<p>First Name: <em>{{user_profile.user.first_name|title}}</em></p>
+<p>Last Name: <em>{{user_profile.user.last_name|title}}</em></p>
+<hr><br>
+<p>Car: {{user_profile.car}}</p>
 <p>About me: {{user_profile.bio}}</p>
 <p>Mods: {{user_profile.mods}}</p>
+
+{% if user_profile.pic_1 and user_profile.pic_2 and user_profile.pic_3 %}
+    <div id="carouselExampleIndicators" style="width: 900px;" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active " data-bs-interval="4000">
+                <img src="{{profile.pic_1.url}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="{{profile.pic_2.url}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="{{profile.pic_3.url}}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+{% endif %}
 <br>
 <br>
 <a class="btn btn-secondary btn-sm" href="{% url 'index' %}">back</a>
