@@ -10,10 +10,13 @@
 
 {% block content %}
 <br>
-{% if user.is_authenticated %}
-    <p>Welcome, {{user | title}}!  <small><a href="{% url 'logout' %}">(Logout)</a></small></p>
-    <a href="{% url 'edit_profile' %}">Edit Profile</a><br>
+<div class="shadow p-3 mb-5 bg-body rounded">
     <br>
+{% if user.is_authenticated %}
+
+    <p><strong>Welcome, <em>{{user | title}}!</em></strong>  <small><a class="btn btn-secondary btn-sm" style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .3rem; --bs-btn-font-size: .75rem;" href="{% url 'logout' %}"> Logout</a></small></p>
+    <a href="{% url 'edit_profile' %}">Edit Profile</a>
+    <br><br>
 {% else %}
     <a href="{% url 'login' %}">Login</a><br>
     <br>
@@ -23,26 +26,28 @@
 {% if user.is_authenticated %}
     <a href="{% url 'create_post' %}">Add a Post</a><br>
     <br>
-    <br>
 {% endif %}
+</div>
 <h1>Blog Posts</h1>
 <hr>
 <br>
-    
+<div class="shadow p-3 mb-5 bg-body rounded">
+    <br>
     <ul>
     {% for post in posts %}
-        <li>
-            <h6><a href="{% url 'post_details' post.id %}">{{post.title|title}}</a> - By {{post.user|title}}</h6>
+        <li class="list-group-item">
+            <h5><a href="{% url 'post_details' post.id %}">{{post.title|title}}</a></h5>
+            <em><small>- By {{post.user|title}}</small></em>
+            <p style="max-width: 600px;">{{post.content|slice:":245"}}</p>
             {% if user.id == post.user.id %}
             <a class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .15rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .75rem;" href="{% url 'update' post.id %}">Edit</a>
             <a class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .15rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .75rem;" href="{% url 'delete' post.id %}">Delete</a>
-            {% endif %}
-         <br><br>       
+            {% endif %}    
         </li>
-        <br>
+        <br><br><br>
     {% endfor %}
     </ul>    
-
+</div>
 {% endblock content %}
     
     
