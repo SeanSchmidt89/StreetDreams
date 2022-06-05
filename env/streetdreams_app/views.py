@@ -1,14 +1,11 @@
-from multiprocessing import context
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView,  DeleteView, ListView, UpdateView, FormView
 from .models import *
 from .forms import *
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import login
-from django.shortcuts import redirect
 import requests
 
 
@@ -55,6 +52,7 @@ class UserLogin(LoginView):
     
     def get_success_url(self):
         return reverse_lazy('index')
+
 
 class Register(FormView):
     template_name = 'streetdreams_app/register.html'
@@ -126,19 +124,20 @@ class ProfilePage(DetailView):
         context['user_profile'] = user_profile
         return context
 
+
 class EditProfilePage(UpdateView):
     model = Profile
     template_name = 'streetdreams_app/edit_profile_page.html'
     fields = ['bio', 'car', 'mods','profile_pic', 'pic_1', 'pic_2', 'pic_3']
-
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    bio = models.TextField()
-    profile_pic = models.ImageField(null=True, blank=True, upload_to='images/profile')
-    car = models.CharField(max_length=100, null=True, blank=True)
-    mods = models.TextField(null=True, blank=True)
-    pic_1 = models.ImageField(null=True, blank=True, upload_to='images/profile')
-    pic_2 = models.ImageField(null=True, blank=True, upload_to='images/profile')
-    pic_3 = models.ImageField(null=True, blank=True, upload_to='images/profile')
-
-
     success_url = reverse_lazy('index')
+
+
+class CreateProfile(CreateView):
+    model = Profile
+    form_class = ProfileForm
+    template_name = 'streetdreams_app/create_profile.html'
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)

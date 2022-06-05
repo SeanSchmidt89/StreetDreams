@@ -10,15 +10,18 @@
 <br>
 <h1>User Login</h1>
 <hr>
-<br>
-
+<div class="shadow p-3 mb-5 bg-body rounded">
+    <br>
     <form action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <button class="btn btn-primary btn-sm" type="submit">Login</button>
+        <button class="btn btn-primary btn-sm" type="submit">Login</button><br><br>
     </form>
+</div>
 <br>
-<p>Dont have an account? <a class="btn btn-primary btn-sm" href="{% url 'register' %}">Register</a></p>
-<a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Back</a>
+<div class="shadow p-3 mb-5 bg-body rounded"><br>
+    <h5>Dont have an account yet?</h5><br>
+    <a class="btn btn-primary btn-sm" href="{% url 'register' %}">Register</a><br><br>
+    <a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Back</a><br><br>
+</div>
 {% endblock content %}
-    

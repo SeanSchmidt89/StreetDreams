@@ -15,4 +15,5 @@ urlpatterns = [
     path('edit_profile/', EditProfile.as_view(), name='edit_profile'),
     path('profile/<int:pk>', ProfilePage.as_view(), name='profile_page'),
     path('edit_profile_page/<int:pk>', EditProfilePage.as_view(), name='edit_profile_page'),
+    path('create_profile/', CreateProfile.as_view(), name='create_profile'),
 ]
