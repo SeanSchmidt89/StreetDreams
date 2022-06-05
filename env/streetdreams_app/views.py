@@ -125,3 +125,20 @@ class ProfilePage(DetailView):
 
         context['user_profile'] = user_profile
         return context
+
+class EditProfilePage(UpdateView):
+    model = Profile
+    template_name = 'streetdreams_app/edit_profile_page.html'
+    fields = ['bio', 'car', 'mods','profile_pic', 'pic_1', 'pic_2', 'pic_3']
+
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profile_pic = models.ImageField(null=True, blank=True, upload_to='images/profile')
+    car = models.CharField(max_length=100, null=True, blank=True)
+    mods = models.TextField(null=True, blank=True)
+    pic_1 = models.ImageField(null=True, blank=True, upload_to='images/profile')
+    pic_2 = models.ImageField(null=True, blank=True, upload_to='images/profile')
+    pic_3 = models.ImageField(null=True, blank=True, upload_to='images/profile')
+
+
+    success_url = reverse_lazy('index')

@@ -2,31 +2,28 @@
 
 
 {% block title %}
-    Edit Profile
+    Edit Profile Page
 {% endblock title %}
-
-
 
 
 
 {% block content %}
     <br>
-    <h1>Edit Settings</h1>
+    <h1>Edit Profile Page</h1>
+    <hr>
     <br>
     {% if user.is_authenticated %}
-    <p>{{user.profile.bio}}</p>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
-        <button class="btn btn-primary btn-sm" type="submit">Update</button>
+        <button type="submit" class="btn btn-primary">Update Profile Page</button>
     </form>
     <br>
-    <a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Back</a>
+    <a class="btn btn-secondary" href="{% url 'index' %}">Back</a>
     {% else %}
     <p>Please Log in to view this page.</p>
 
     {% endif %}
-    <br><br><br><br>
 
 {% endblock content %}
     

@@ -14,5 +14,5 @@ urlpatterns = [
     path('vininfo/', Api, name='api'),
     path('edit_profile/', EditProfile.as_view(), name='edit_profile'),
     path('profile/<int:pk>', ProfilePage.as_view(), name='profile_page'),
-
+    path('edit_profile_page/<int:pk>', EditProfilePage.as_view(), name='edit_profile_page'),
 ]

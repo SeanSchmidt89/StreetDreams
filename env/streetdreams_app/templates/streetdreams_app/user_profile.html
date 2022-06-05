@@ -19,13 +19,22 @@
 <br><br>
 <p>First Name: <em>{{user_profile.user.first_name|title}}</em></p>
 <p>Last Name: <em>{{user_profile.user.last_name|title}}</em></p>
+{% if user.id == user_profile.id %}
+    <small><a class="btn btn-primary btn-sm" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile</a></small>
+    <small><a class="btn btn-secondary btn-sm" href="{% url 'logout' %}">Logout</a></small></p>
+{% endif %}
+</div>  
 <hr><br>
+
+<div class="shadow p-3 mb-5 bg-body rounded">
 <p>Car: {{user_profile.car}}</p>
 <p>About me: {{user_profile.bio}}</p>
 <p>Mods: {{user_profile.mods}}</p>
 
+
+<!--profile pics carousel-->
 {% if user_profile.pic_1 and user_profile.pic_2 and user_profile.pic_3 %}
-    <div id="carouselExampleIndicators" style="width: 900px;" class="carousel slide" data-bs-ride="true">
+    <div id="carouselExampleIndicators" style="width: 800px; margin-left: 45px;" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
