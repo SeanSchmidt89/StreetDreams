@@ -38,6 +38,8 @@
     <p>MPG Highway: {{highway}}</p>
     <p>MPG City: {{city}}</p>
 </div>
+{% elif not make %}
+{{invalid}} <br><br>
 {% endif %}
 <a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Back</a>
     

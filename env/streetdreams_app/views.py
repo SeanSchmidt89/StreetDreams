@@ -68,7 +68,15 @@ class Register(FormView):
 
 
 def Api(request):
-    if 'car' in request.POST:
+    if request.GET:
+        context ={}
+
+    elif 'car' in request.POST and request.POST['car'] == '':
+        invalid = 'Please enter a VIN Number'
+
+        context = {'invalid': invalid}
+        
+    elif 'car' in request.POST:
         vin = request.POST['car']
         api_key = 'ZrQEPSkKc2VhbnNjaG1pZHQ4OUB5YWhvby5jb20='
         url = 'https://auto.dev/api/vin/'+vin+'?apikey='+api_key 
@@ -97,6 +105,7 @@ def Api(request):
             'highway': highway,
             'city': city,
         }
+        
     else:
         context = {}
 
