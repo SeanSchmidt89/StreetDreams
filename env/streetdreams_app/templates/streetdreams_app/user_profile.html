@@ -17,8 +17,8 @@
     <img class="rounded-circle" width="140px" height="140px" src="{{profile.profile_pic.url}}" alt="">
 {% endif %}
 <br><br>
-<p>First Name: <em>{{user_profile.user.first_name|title}}</em></p>
-<p>Last Name: <em>{{user_profile.user.last_name|title}}</em></p>
+<p><strong>First Name: </strong><em>{{user_profile.user.first_name|title}}</em></p>
+<p><strong>Last Name: </strong><em>{{user_profile.user.last_name|title}}</em></p>
 {% if user.id == user_profile.id %}
     <small><a class="btn btn-primary btn-sm" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile</a></small>
     <small><a class="btn btn-secondary btn-sm" href="{% url 'logout' %}">Logout</a></small></p>
